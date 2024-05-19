@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-const connectDB = `mongodb+srv://darsheelchudal11:darsheel@cluster2.wcbft9e.mongodb.net/?retryWrites=true&appName=Cluster2`;
+const connectionString = `mongodb+srv://darsheelchudal11:darsheel@cluster2.wcbft9e.mongodb.net/?retryWrites=true&appName=Cluster2`;
 
-mongoose.connect(connectDB).then(() => console.log("CONNECTED SUCCESSFULLY"));
+export const connectDB = (url) => {
+  return mongoose.connect(connectionString);
+};
