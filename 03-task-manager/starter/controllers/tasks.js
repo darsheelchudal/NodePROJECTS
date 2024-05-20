@@ -1,4 +1,4 @@
-import { taskModel } from "../models/tasks.js";
+import taskModel from "../models/tasks.js";
 
 //get all tasks
 export const getAllTasks = (req, res) => {
@@ -7,8 +7,12 @@ export const getAllTasks = (req, res) => {
 
 //create tasks
 export const createTask = async (req, res) => {
-  const task = await Task.create();
-  res.json(req.body);
+  try {
+    const task = await taskModel.create(req.body);
+    res.status(201).json({ task });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 
 //get single item
